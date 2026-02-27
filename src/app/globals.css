@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Gabarito", "Gabarito Fallback", system-ui, sans-serif;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --background: #ffffff;
+  --foreground: #111827;
+  --muted: #6b7280;
+  --muted-foreground: #4b5563;
+  --card: #ffffff;
+  --card-hover: #f9fafb;
+  --card-muted: #f9fafb;
+  --border: #e5e7eb;
+  --dot-color: #d1d5db;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --nav-active-bg: #2563eb;
+  --nav-active-text: #ffffff;
+}
+
+.dark {
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #d4d4d8;
+  --muted-foreground: #d4d4d8;
+  --card: #262626;
+  --card-hover: #404040;
+  --border: #27272a;
+  --dot-color: #27272a;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --nav-active-bg: #60a5fa;
+  --nav-active-text: #171717;
+}
+
+/* All text: Gabarito, font-style normal */
+html {
+  font-family: "Gabarito", "Gabarito Fallback", system-ui, sans-serif;
+  font-style: normal;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-style: normal;
+  color: var(--foreground);
+  background-color: var(--background);
+  min-height: 100vh;
+  font-weight: 400;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Theme transition: smooth switch for background layer */
+.theme-transition {
+  transition: background-color 0.4s ease;
+}
+
+/* Section appear animation */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-appear {
+  opacity: 0;
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+/* Headings and all text inherit Gabarito from html/body; ensure headings keep font-style normal */
+h1, h2, h3, h4, p, span, a, li, label, button, input, select, textarea {
+  font-family: inherit;
+  font-style: normal;
+}
+
+section h2 {
+  line-height: 1.3;
+}
+
+/* Dark mode: Hero, Quick & Fun Facts, Tech Skills, Recent Projects titles are white */
+.dark .hero-title,
+.dark .fun-facts-section .section-title,
+.dark .tech-skills-section .section-title,
+.dark .recent-projects-section .recent-projects-title {
+  color: #fff;
+}
+
+/* Dark mode: Work Experience section – all text white */
+.dark .work-experience-section .work-experience-title,
+.dark .work-experience-section [data-section-button] .text-gray-900,
+.dark .work-experience-section [data-section-button] p {
+  color: #fff;
+}
+
+/* Dark mode only: section buttons/cards – Quick & Fun Facts, Tech Skills use gray-800; Work Experience (4 sections) use gray-900 */
+.dark [data-section-button] {
+  background-color: var(--color-gray-800);
+  color: #fff;
+  border-color: #374151;
+}
+.dark .work-experience-section [data-section-button] {
+  background-color: var(--color-gray-900);
+}
+.dark [data-section-button] .text-gray-700,
+.dark [data-section-button] .text-gray-900 {
+  color: #fff !important;
+}
+
+.image-brightness-hover {
+  transition: filter 0.2s ease;
+}
+.image-brightness-hover:hover {
+  filter: brightness(1.08);
+}
+
+.bg-dot-pattern {
+  background-color: var(--background);
+  background-image: radial-gradient(circle at center, var(--dot-color) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: 0 0;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
